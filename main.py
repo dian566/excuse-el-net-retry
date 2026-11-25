@@ -10,6 +10,8 @@ ENTRY = (
 
 
 def main() -> None:
+    if len(ENTRY) > 200 or "\n" in ENTRY:
+        raise ValueError("entry must be a single line of at most 200 characters")
     os.makedirs("/output", exist_ok=True)
     with open("/output/entry.txt", "w", encoding="utf-8") as handle:
         handle.write(ENTRY)
